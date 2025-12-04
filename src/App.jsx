@@ -1,5 +1,6 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+
+import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -8,22 +9,32 @@ import HomePage from './pages/HomePage'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
-
+import RootLayout from './pages/RootLayout'
+import SignUp from './pages/SignUp'
+import NotFoundPage from './pages/NotFoundPage'
 function App() {
-  return (
-    <>
-      <Navbar />
+  const router = createBrowserRouter(
+    createRoutesFromElements(
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Blog" element={<Blog />} />
-      </Routes>
+     <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="signup" element={<SignUp/>} />
+        <Route path = "*" element ={<NotFoundPage/>}></Route>
+        
 
-      
-    </>
-  )
-}
+      </Route>
+      )
+      );
+     return<RouterProvider router = {router} />;
 
-export default App
+
+      }
+      export default App;
+
+
+
+
+

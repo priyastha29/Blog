@@ -4,6 +4,7 @@ import heroImg2 from "../assets/images/img2.jpg";
 
 const HeroSection = () => {
   return (
+    
     <div>
       <div className='hero_section'>
         <div className='hero-left'>

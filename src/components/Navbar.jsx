@@ -1,29 +1,44 @@
 import React from 'react'
 import logo from "../assets/logo/logo.png"
-import { Link }from "react-router-dom";
-import { Outlet } from 'react-router-dom';
+import { NavLink, useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <div className='navbar'>
+    <div className="navbar">
+      
+      {/* Logo */}
       <div className='logo'>
         <img src={logo} alt="Logo" />
       </div>
+
+      {/* Menu */}
       <div className='menu'>
-        <ul>
-            <li><Link to ="/"> Home </Link></li>
-            <li><Link to ="/about"> About </Link></li>
-            <li><Link to ="/contact"> Contact </Link></li>
-            <li><Link to ="/blog"> Blog</Link></li>
+        <ul >
+          <li>
+            <NavLink to ="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to ="/about">About</NavLink>
+          </li>
+          <li>
+            <NavLink to ="/contact">Contact</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/blog" >Blog</NavLink>
+          </li>
         </ul>
       </div>
-      <div className='btn'>
-        <button>Sign Up</button>
-        <Outlet/>
-      </div>
-    </div>
-    </div>
-  )
-}
 
-export default Navbar
+      {/* Sign Up Button */}
+      <div className='btn'>
+        <button onClick={() => navigate("/signup")}>Sign Up</button>
+      </div>
+
+    </div>
+  );
+};
+
+export default Navbar;
